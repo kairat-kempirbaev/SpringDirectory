@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Projections.MoviesSpecific;
 import com.example.demo.entities.Movies;
 import com.example.demo.repository.MoviesRepository;
-import com.example.demo.utils.OffsetBasedPageRequest;
 
 @Service
 @Transactional

@@ -14,39 +14,47 @@ public class Stars {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private String a_id;
+	private String id;
 
 	@Column(name = "name")
-	private String b_name;
+	private String name;
 	
 	@Column(name = "birthYear")
-	private Integer c_birthYear;
+	private Integer birthYear;
 
-    @ManyToMany(mappedBy = "stars")
+
+	@ManyToMany(mappedBy = "stars")
     Set<Movies> movies;
-
-	public String getA_id() {
-		return a_id;
-	}
-
-	public void setA_id(String a_id) {
-		this.a_id = a_id;
-	}
-
-	public String getB_name() {
-		return b_name;
-	}
-
-	public void setB_name(String b_name) {
-		this.b_name = b_name;
-	}
-
-	public Integer getC_birthYear() {
-		return c_birthYear;
-	}
-
-	public void setC_birthYear(Integer c_birthYear) {
-		this.c_birthYear = c_birthYear;
-	}
 	
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getBirthYear() {
+		return birthYear;
+	}
+
+	public void setBirthYear(Integer birthYear) {
+		this.birthYear = birthYear;
+	}
+
+	public Set<Movies> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(Set<Movies> movies) {
+		this.movies = movies;
+	}
 }

@@ -2,19 +2,16 @@ package com.example.demo.entities;
 
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity (name = "movies")// This tells Hibernate to make a table out of this class
 public class Movies {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private String id; 
     private String title;
     private Integer year;
@@ -38,9 +35,6 @@ public class Movies {
     @OneToMany(mappedBy = "movieId")
     private Set<Sales> sales;
     
-    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Ratings rating;
 
 	public String getId() {
 		return id;
@@ -98,11 +92,5 @@ public class Movies {
 		this.sales = sales;
 	}
 
-	public Ratings getRating() {
-		return rating;
-	}
 
-	public void setRating(Ratings rating) {
-		this.rating = rating;
-	}
 }

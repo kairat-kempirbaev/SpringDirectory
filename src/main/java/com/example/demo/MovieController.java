@@ -20,7 +20,6 @@ import com.example.demo.Projections.MoviesSpecific;
 import com.example.demo.entities.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.MoviesService;
-import com.example.demo.utils.OffsetBasedPageRequest;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/demo") // This means URL's start with /demo (after Application path)
