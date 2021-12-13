@@ -4,7 +4,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.*;
 
 @Entity (name = "movies")// This tells Hibernate to make a table out of this class
 public class Movies {
@@ -16,25 +16,29 @@ public class Movies {
     private String title;
     private Integer year;
     private String director;
-	
+    
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(
-    		  name = "genres_in_movies", 
+    @JoinTable(name = "genres_in_movies", 
     		  joinColumns = @JoinColumn(name = "movieId"), 
     		  inverseJoinColumns = @JoinColumn(name = "genreId"))
     private Set<Genres> genres;
     
+    @JsonIgnore
     @ManyToMany
-    @JoinTable(
-    		  name = "stars_in_movies", 
+    @JoinTable(name = "stars_in_movies", 
     		  joinColumns = @JoinColumn(name = "movieId"), 
     		  inverseJoinColumns = @JoinColumn(name = "starId"))
     private Set<Stars> stars;
     
-
+    @JsonIgnore
     @OneToMany(mappedBy = "movieId")
     private Set<Sales> sales;
     
+    @JsonIgnore
+    @OneToOne(mappedBy = "movie", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Ratings rating;
 
 	public String getId() {
 		return id;
@@ -86,6 +90,14 @@ public class Movies {
 
 	public Set<Sales> getSales() {
 		return sales;
+	}
+
+	public Ratings getRating() {
+		return rating;
+	}
+
+	public void setRating(Ratings rating) {
+		this.rating = rating;
 	}
 
 	public void setSales(Set<Sales> sales) {

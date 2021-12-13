@@ -21,34 +21,43 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Ratings {
     @Id
     @Column(name = "movieId")
-    private String movieId; 
+    private String id; 
     
     private Float rating;
     private Integer numVotes;
-
-
-	public String getMovieId() {
-		return movieId;
+    
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "movieId")
+    private Movies movie;
+    
+	public Movies getMovie() {
+		return movie;
 	}
-	public void setMovieId(String movieId) {
-		this.movieId = movieId;
+	
+	public void setMovie(Movies movie) {
+		this.movie = movie;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public Float getRating() {
 		return rating;
 	}
 
-
 	public void setRating(Float rating) {
 		this.rating = rating;
 	}
 
-
 	public Integer getNumVotes() {
 		return numVotes;
 	}
-
 
 	public void setNumVotes(Integer numVotes) {
 		this.numVotes = numVotes;

@@ -13,4 +13,5 @@ public interface MoviesSpecific {
     Integer getYear();
     Set<Genres> getGenres();
     Set<Stars> getStars();
+    Ratings getRating();
 }

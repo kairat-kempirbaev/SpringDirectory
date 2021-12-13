@@ -7,6 +7,6 @@ import com.example.demo.entities.*;
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface SalesRepository extends CrudRepository<Stars, Integer> {
+public interface SalesRepository extends CrudRepository<Sales, Integer> {
 
 }
